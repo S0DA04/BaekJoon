@@ -1,0 +1,14 @@
+a = list(map(int,input().split()))
+Prize = 0;
+cnt = a.count(a[0])
+b = 0;
+if (cnt == 1):
+  cnt = a.count(a[1])
+  b = 1;
+if(cnt == 3):
+  Prize = 10000 + 1000 * a[0];
+elif (cnt == 1):
+  Prize = max(a) * 100;
+elif (cnt == 2):
+  Prize = 1000 + a[b]*100;
+print(Prize)
