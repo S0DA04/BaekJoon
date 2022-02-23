@@ -1,0 +1,13 @@
+Word = input().upper()
+Most = "?";
+Cnt_Most = 0;
+Letter = set(Word);
+Letter = list(Letter);
+for i in Letter:
+  Cnt = Word.count(i);
+  if Cnt > Cnt_Most:
+    Cnt_Most = Cnt;
+    Most = i;
+  elif Cnt == Cnt_Most:
+    Most = "?";
+print(Most) 
