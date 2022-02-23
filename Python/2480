@@ -1,0 +1,10 @@
+Time_H, Time_M = map(int, input().split(" "))
+Taking = int(input())
+
+Time_M = Time_M + Taking
+while Time_M >= 60:
+  Time_H += 1;
+  Time_M -= 60;
+  if Time_H == 24:
+    Time_H = 0;
+print(str(Time_H) + " " + str(Time_M))
