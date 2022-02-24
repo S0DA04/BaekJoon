@@ -1,0 +1,14 @@
+#O(n^2)
+#선택정렬
+N = int(input());
+list = [] ;
+for i in range(N):
+  list.append(int(input()))
+for j in range(N):
+  A = list[j];
+  B = min(list[j::]);
+  list[list.index(B)] = A;
+  list[j] = B;
+
+for k in list:
+  print(k);
