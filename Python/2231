@@ -1,0 +1,11 @@
+N = int(input());
+Save = 0;
+for i in range(N):
+  Num = N-i-1;
+  for j in str(Num):
+    Num += int(j);
+  if Num == N:
+    Save = N-i-1;
+  else:
+    continue;
+print(Save)
