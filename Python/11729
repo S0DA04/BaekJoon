@@ -12,6 +12,7 @@ def hanoi(n, a, b):
       hanoi(n-1,a,6-a-b);
       print(str(a)+" "+str(b));
       hanoi(n-1,6-a-b,b);
+
 def Cnt(n):
   if n == 1:
     return 1;
