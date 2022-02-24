@@ -1,0 +1,12 @@
+N, M = map(int, input().split());
+list = list(map(int, input().split()));
+Closest = 0;
+for i in range(N):
+  for j in range(i+1,N):
+     for k in range(j+1,N):
+       Sum = list[i] + list[j] + list[k];
+       if Sum > M:
+         continue;
+       else:
+         Closest = max(Closest, Sum);
+print(Closest)
