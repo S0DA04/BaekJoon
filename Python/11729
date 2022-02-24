@@ -1,0 +1,22 @@
+n = int(input())
+
+def hanoi(n, a, b):
+  if n == 1:
+    print(str(a)+" "+str(b))
+  else:
+    if b == 3:
+      hanoi(n-1,a,6-a-b);
+      print(str(a)+" "+str(b));
+      hanoi(n-1,6-a-b,b);
+    else:
+      hanoi(n-1,a,6-a-b);
+      print(str(a)+" "+str(b));
+      hanoi(n-1,6-a-b,b);
+def Cnt(n):
+  if n == 1:
+    return 1;
+  else:
+    return Cnt(n-1)+1+Cnt(n-1);
+
+print(Cnt(n))
+hanoi(n,1,3);
