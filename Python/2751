@@ -11,7 +11,7 @@ for l in list:
   print(l)
   
 
-#병합정렬(반복문이 많아서 시간 초과)
+#병합정렬 - 기본ver (반복문이 많아서 시간 초과 인줄? 이게 아니네)
 N = int(input());
 list = [] ;
 for i in range(N):
@@ -53,3 +53,38 @@ while len(list)> 1:
   list = sorted;
 for l in list[0]:
   print(l);
+
+#병합정렬 - 재귀함수ver (그게 아니었네? 그냥 안되네? 왜지? pypy로는 잘만 통과면서;;) 
+N = int(input());
+list = [] ;
+for i in range(N):
+  list.append(int(input()));
+
+def merge_sort(l):
+  if len(l) == 1:
+    return l
+  mid = int(len(l)/2);
+  left = merge_sort(l[:mid]);
+  right= merge_sort(l[mid:]);
+  A = 0;
+  B = 0; 
+  l = []
+  while A < len(left) and B < len(right):
+    if left[A] < right[B]:
+      l.append(left[A]);
+      A += 1
+    else:
+      l.append(right[B]);
+      B += 1;
+  if A == len(left):
+    while B < len(right):
+      l.append(right[B]);
+      B += 1;
+  else:
+    while A < len(left):
+      l.append(left[A]);
+      A += 1;
+  return l;
+
+for _ in merge_sort(list):
+  print(_)
