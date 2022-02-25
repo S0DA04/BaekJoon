@@ -62,3 +62,17 @@ for j in range(N-1):
       list[k+1] = A;
 for l in list:
   print(l);
+  
+  
+  
+#O(nlogn)
+#내장함수
+N = int(input());
+list = [] ;
+for i in range(N):
+  list.append(int(input()))
+
+list.sort()
+
+for l in list:
+  print(l)
