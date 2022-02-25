@@ -1,0 +1,45 @@
+#O(nlogn)
+
+
+#병합정렬(반복문이 많아서 시간 초과)
+N = int(input());
+list = [] ;
+for i in range(N):
+  list.append([int(input())]);
+
+sorted = []
+
+while len(list)> 1:
+  sorted = []
+  length = len(list)
+  divided = int(length/2)
+  if length%2 == 1:
+    for i in range(divided+1):
+      sorted.append([])
+    sorted[divided] = list[length-1]
+  else : 
+    for i in range(divided):
+      sorted.append([])
+  for j in range(divided):
+    #list[2*j] 하고 list[2*j+1] 비교
+    A = 0;
+    B = 0;
+    k = 2*j
+    while A < len(list[k]) or B < len(list[k+1]):
+      try:
+        if list[k][A] < list[k+1][B]:
+          sorted[j].append(list[k][A]);
+          A += 1; 
+        else:
+          sorted[j].append(list[k+1][B]);
+          B += 1;
+      except:
+        if A == len(list[k]):
+          sorted[j].append(list[k+1][B]);
+          B += 1;
+        else:
+          sorted[j].append(list[k][A]);
+          A += 1;
+  list = sorted;
+for l in list[0]:
+  print(l);
