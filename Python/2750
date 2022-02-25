@@ -22,8 +22,9 @@ for i in range(N):
 
 if N == 1:
   print(list[0])
-#1 사이클
+
 else:
+  #1 사이클
   if list[1] < list[0]:
     A = list[1];
     list[1] = list[0];
@@ -45,3 +46,19 @@ else:
   
   for _ in list:
     print(_)
+    
+
+#버블 정렬
+N = int(input());
+list = [] ;
+for i in range(N):
+  list.append(int(input()))
+
+for j in range(N-1):
+  for k in range(N-j-1):
+    if list[k+1] < list[k]:
+      A = list[k]
+      list[k] = list[k+1];
+      list[k+1] = A;
+for l in list:
+  print(l);
