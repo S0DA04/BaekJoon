@@ -88,3 +88,50 @@ def merge_sort(l):
 
 for _ in merge_sort(list):
   print(_)
+
+#힙 정렬(시간초과 - 삽입정렬 섞어봐야겠음 :3)
+N = int(input());
+list = [] ;
+sorted=[];
+
+for i in range(N):
+  list.append(int(input()));
+
+def heap(list, k):
+  try:
+    if list[k] > list[2*k+1]:
+      A = list[k];
+      list[k] = list[2*k+1];
+      list[2*k+1] =A;
+      if k%2 == 1:
+        if (k-1)/2 >= 0:
+          list= heap(list, int((k-1)/2));
+      else:
+        if (k-2)/2 >= 0:
+          list= heap(list, int((k-2)/2));  
+  except:
+    return list;
+  try:
+    if list[k] > list[2*k+2]:
+      A = list[k];
+      list[k] = list[2*k+2];
+      list[2*k+2] =A;
+      if k%2 == 1:
+        if (k-1)/2 >= 0:
+          list= heap(list, int((k-1)/2));
+      else:
+        if (k-2)/2 >= 0:
+          list= heap(list, int((k-2)/2));
+  except:
+    return list;
+  return list;
+
+while len(list) > 0:
+  for k in range(len(list)):
+    list = heap(list, k);
+  sorted.append(list[0]);
+  list[0] = list[len(list)-1];
+  del list[len(list)-1];
+
+for j in sorted:
+  print(j);
