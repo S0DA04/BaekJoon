@@ -214,3 +214,44 @@ def quick_sort(Unsorted):
 Sorted = quick_sort(Unsorted);
 for i in Sorted:
   print(i);
+  
+  
+#퀵정렬 (이것도 어렵네.... 재귀함수...아직도 부족하구나...)
+
+#재귀함수 깊이 설정 코드
+import sys
+sys.setrecursionlimit(100000)
+
+N = int(input());
+Unsorted = [] ;
+for i in range(N):
+  Unsorted.append(int(input()))
+
+def quick_sort(Unsorted,a,b):
+  Pivot = Unsorted[a];
+  Left = a;
+  Right = b;
+  while Left < Right:
+    while Pivot < Unsorted[Right] and Left < Right:
+      Right -= 1;
+    if Left != Right:
+      Unsorted[Left] = Unsorted[Right];
+    while Pivot  > Unsorted[Left] and Left < Right:
+      Left += 1;
+    if Left != Right:
+      Unsorted[Right] = Unsorted[Left];
+  Unsorted[Left] = Pivot;
+  Pivot = Left;
+  if a < Pivot:
+    quick_sort(Unsorted, a, Pivot-1);
+  if b > Pivot:
+    quick_sort(Unsorted, Pivot+1, b)
+
+quick_sort(Unsorted, 0, N-1)
+Sorted = Unsorted;
+for i in Sorted:
+  print(i); 
+
+#참고한 코드 https://butter-shower.tistory.com/17https://butter-shower.tistory.com/17
+#퀵정렬은 생각보다 효율이 좋지 않은 코드 최악의 경우 O(n^2)를 가져 평균인 O(nlogn)과 다른 시간 복잡도를 지닐수도 있음 그래서 안됌;; 
+#
