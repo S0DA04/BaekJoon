@@ -54,6 +54,7 @@ while len(list)> 1:
 for l in list[0]:
   print(l);
 
+
 #병합정렬 - 재귀함수ver 
 N = int(input());
 list = [] ;
@@ -88,6 +89,7 @@ def merge_sort(l):
 
 for _ in merge_sort(list):
   print(_)
+
 
 #힙 정렬(시간초과 - 삽입정렬 섞어봐야겠음 :3)
 N = int(input());
@@ -183,3 +185,32 @@ for l in sorted:
   print(l);
 #도저히 혼자서 못짜겠어서 부분부분 긁어오며 짬
 #https://wonnyhouse.tistory.com/m/217
+
+
+#퀵정렬(메모리 초과/ 퀵정렬의 장점을 하나도 못살림;;)
+N = int(input());
+sorted = []
+Unsorted = [] ;
+for i in range(N):
+  Unsorted.append(int(input()))
+
+def quick_sort(Unsorted):
+  Pivot = Unsorted[0];
+  Left = [];
+  Right = [];
+  for i in Unsorted[1:]:
+    if i < Pivot:
+      Left.append(i);
+    else:
+      Right.append(i);
+  if len(Left) > 1:
+    Left = quick_sort(Left);
+  if len(Right) > 1: 
+    Right = quick_sort(Right);
+  A = []
+  A.append(Pivot);
+  return Left + A + Right; 
+
+Sorted = quick_sort(Unsorted);
+for i in Sorted:
+  print(i);
