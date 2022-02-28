@@ -254,4 +254,3 @@ for i in Sorted:
 
 #참고한 코드 https://butter-shower.tistory.com/17https://butter-shower.tistory.com/17
 #퀵정렬은 생각보다 효율이 좋지 않은 코드 최악의 경우 O(n^2)를 가져 평균인 O(nlogn)과 다른 시간 복잡도를 지닐수도 있음 그래서 안됌;; 
-#
