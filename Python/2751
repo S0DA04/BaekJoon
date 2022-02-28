@@ -11,7 +11,7 @@ for l in list:
   print(l)
   
 
-#병합정렬 - 기본ver (반복문이 많아서 시간 초과 인줄? 이게 아니네)
+#병합정렬 - 기본ver
 N = int(input());
 list = [] ;
 for i in range(N):
@@ -54,7 +54,7 @@ while len(list)> 1:
 for l in list[0]:
   print(l);
 
-#병합정렬 - 재귀함수ver (그게 아니었네? 그냥 안되네? 왜지? pypy로는 잘만 통과면서;;) 
+#병합정렬 - 재귀함수ver 
 N = int(input());
 list = [] ;
 for i in range(N):
@@ -135,3 +135,51 @@ while len(list) > 0:
 
 for j in sorted:
   print(j);
+  
+  
+#힙 정렬(와 힙정렬 개어렵네;;)
+N = int(input());
+unsorted = [] ;
+sorted=[];
+
+for i in range(N):
+  unsorted.append(int(input()));
+
+def heap(list):
+  n = len(list);
+  #최대힙을 계산하는 부분이다. 자식노드들은 계산 할필요가 없기 때문에 n//2-1에서부터 0까지 역순으로 계산을 진행하면된다.
+  #첫번째 사이클
+  for i in range(n//2-1,-1,-1):
+    heapify(list,i,n);
+
+  #오름차순으로 정렬
+  #2 ~사이클
+  for i in range(n-1,0,-1):
+    list[0], list[i] = list[i], list[0];#자리를 바꿔줌으로서 젤 큰 값을 맨 뒤로 보내주게 된다
+    heapify(list, 0, i); # 맨 뒤로 보낸 값 빼고 다시 max heap으로 바꿔준다.
+    
+  return list;
+
+#리스트를 Max Heap으로 바꾸는 함수. (Max Heap이란, 부모노드가 자식노드보다 큰값을 가지게 정렬된 이진트리를 말하는듯?)
+def heapify(list,index,heapsize):
+  largest = index;
+  Left_index = 2* index+1; #왼쪽 노드 연산 식
+  Right_index = 2*index+2; #오른쪽 노드 연산 식
+  #왼쪽 노드가 존재하는 지 확인, 왼쪽노드의 값이 부모노드의 값보다 큰지 확인하고, 더 크다면 노드의 인덱스를 저장
+  if Left_index < heapsize and list[Left_index] > list[largest]:
+      largest = Left_index;
+
+  #오른쪽 노드 계산, largest는 왼쪽노드의 값일수도 있고, 부모노드의 것일 수도 있다.
+  if Right_index < heapsize and list[Right_index] > list[largest]:
+      largest = Right_index;
+
+  #가장 큰값이 부모노드가 아니라면 자식노드중 가장 큰 값을 지니는 노드의 값과 체인지한다.
+  if largest != index:
+      list[largest], list[index] = list[index], list[largest];
+      heapify(list, largest, heapsize);
+
+sorted = heap(unsorted);
+for l in sorted:
+  print(l);
+#도저히 혼자서 못짜겠어서 부분부분 긁어오며 짬
+#https://wonnyhouse.tistory.com/m/217
