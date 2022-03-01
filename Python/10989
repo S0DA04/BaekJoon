@@ -1,0 +1,20 @@
+#O(n)
+#카운팅 정렬(메모리 초과)
+N = int(input());
+Unsorted = [];
+Sorted = [];
+for i in range(N):
+  Unsorted.append(int(input()));
+Max = max(Unsorted);
+Cnt = [0]*(Max+1);
+
+for i in Unsorted:
+  Cnt[i] += 1;
+for i in range(Max+1):
+  while Cnt[i] != 0:
+    Sorted.append(i);
+    Cnt[i] -= 1;
+for i in Sorted:
+  print(i);
+  
+  
