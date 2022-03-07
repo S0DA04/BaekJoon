@@ -1,0 +1,47 @@
+import sys
+N = int(sys.stdin.readline());
+Cnt = [0]* 8001;
+Small = 4001;
+Big = -4001;
+for i in range(N):
+  num =int(sys.stdin.readline());
+  if num < Small:
+    Small = num;
+  if num > Big:
+    Big = num;
+  Cnt[num+4000] += 1;
+ 
+#산술평균 계산
+def sansul(list,N):
+  sum = 0;
+  for i in range(8001):
+    sum += list[i]*(i-4000);
+  return round(sum/N);
+
+#중앙값 찾기
+def mid(list, N):
+  Count = 0;
+  center = int(N/2)+1;
+  for i in range(8001):
+    if center > Count and center <= Count+list[i]:
+      return i-4000;
+    else: 
+      Count += list[i];
+
+#최빈값 찾기
+def most(list, N):
+  Max = max(list);
+  most = list.index(Max);
+  list[most] = 0;
+  try:
+    most = list.index(Max);
+    return most-4000;
+  except:
+    return most-4000;
+
+#범위는 리스트에 집어넣을떄 최댓값 최솟값을 계산하여 구함
+
+print(sansul(Cnt, N));
+print(mid(Cnt, N));
+print(most(Cnt, N));
+print(Big-Small)
