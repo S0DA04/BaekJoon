@@ -1,0 +1,8 @@
+Cnt = [0]*10;
+Sum = 0;
+for i in map(int,str(input())):
+  Cnt[i] += 1;
+for i in range(9,-1,-1):
+  while Cnt[i] != 0:
+    print(i,end="");
+    Cnt[i] -= 1;
