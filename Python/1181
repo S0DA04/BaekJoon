@@ -1,0 +1,12 @@
+import sys;
+N = int(sys.stdin.readline());
+Unsorted = [];
+Sorted = [];
+for i in range(N):
+  Unsorted.append(sys.stdin.readline().strip());
+Unsorted = list(set(Unsorted));
+Unsorted.sort();
+Unsorted.sort(key = len);
+Sorted = Unsorted;
+for i in Sorted:
+  print(i);
