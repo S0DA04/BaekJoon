@@ -1,0 +1,11 @@
+import sys
+N = sys.stdin.readline();
+Original = [];
+Dictionary = {}
+Original = list(map(int,sys.stdin.readline().split()));
+Ziped = list(set(Original));
+Ziped.sort();
+for i in range(len(Ziped)):
+  Dictionary[Ziped[i]] = i;
+for i in Original:
+  print(Dictionary[i], end = " ");
